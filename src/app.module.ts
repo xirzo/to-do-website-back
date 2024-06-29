@@ -1,6 +1,7 @@
 import { Module } from "@nestjs/common";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
+import { SequelizeModule } from "@nestjs/sequelize";
 
 @Module({
   controllers: [
@@ -8,6 +9,18 @@ import { AppService } from "./app.service";
   ],
   providers: [
     AppService,
+  ],
+  imports: [
+    SequelizeModule.forRoot({
+      dialect: 'postgres',
+      host: 'localhost',
+      port: 5433,
+      username: 'postgres',
+      password: 'postgres',
+      database: 'nestcourse',
+      models: [],
+      autoLoadModels: true
+    }),
   ]
 })
 
