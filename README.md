@@ -57,3 +57,9 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+
+## DB Connection
+
+```bash
+$ psql -h 0.0.0.0 -U postgres -d nestcourse 
+```
