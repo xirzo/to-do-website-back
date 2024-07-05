@@ -1,14 +1,12 @@
 import { Module } from "@nestjs/common";
 import { SequelizeModule } from "@nestjs/sequelize";
-import { UsersModule } from "./users/users.module";
 import { ConfigModule } from "@nestjs/config";
-import { User } from "./users/users.model";
+import { TasksModule } from './tasks/tasks.module';
+import { Task } from "./tasks/tasks.model";
 
 @Module({
-  controllers: [
-  ],
-  providers: [
-  ],
+  controllers: [],
+  providers: [],
   imports: [
     ConfigModule.forRoot({
       envFilePath: `.${process.env.NODE_ENV}.env`
@@ -21,11 +19,11 @@ import { User } from "./users/users.model";
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
       models: [
-        User,
+        Task,
       ],
       autoLoadModels: true
     }),
-    UsersModule,
+    TasksModule,
   ]
 })
 
