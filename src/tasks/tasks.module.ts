@@ -7,8 +7,6 @@ import { Task } from './tasks.model';
 @Module({
   controllers: [TasksController],
   providers: [TasksService],
-  imports: [
-    SequelizeModule.forFeature(([Task])),
-  ],
+  imports: [SequelizeModule.forFeature([Task])],
 })
-export class TasksModule { }
+export class TasksModule {}
