@@ -24,4 +24,8 @@ export class Task extends Model<Task, TaskCreationAttribute> {
   @ApiProperty({ example: 'Описание', description: 'Описание задачи' })
   @Column({ type: DataType.STRING, allowNull: false })
   description: string;
+
+  @ApiProperty({ example: 'false', description: 'Выполнена ли задача' })
+  @Column({ type: DataType.BOOLEAN, defaultValue: false, allowNull: true })
+  isDone: boolean;
 }
