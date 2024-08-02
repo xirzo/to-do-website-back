@@ -1,9 +1,10 @@
-import { Body, Controller, Delete, Get, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Patch, Post } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { TasksService } from './tasks.service';
-import { Task } from './tasks.model';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { RemoveTaskDto } from './dto/remove-task.dto';
+import { SetIsDoneTaskDto } from './dto/set-is-done-task.dto';
+import { Task } from './tasks.model';
+import { TasksService } from './tasks.service';
 
 @ApiTags('Задачи')
 @Controller('tasks')
@@ -29,5 +30,12 @@ export class TasksController {
   @Delete()
   remove(@Body() removeDto: RemoveTaskDto) {
     return this.tasksService.removeTask(removeDto);
+  }
+
+  @ApiOperation({ summary: 'Пометить задачу как решенную или нерешенную' })
+  @ApiResponse({ status: 200, type: Task })
+  @Patch()
+  setIsDone(@Body() setIsDoneDto: SetIsDoneTaskDto) {
+    return this.tasksService.setIsDoneTask(setIsDoneDto);
   }
 }
